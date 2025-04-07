@@ -1,0 +1,23 @@
+un solo endpoint, de la base de datos traer un solo listado, un arreglo de alumnos que simula la base de datos.
+de cada estudiante regresan una calificacin_final, matricula, nombre y si tiene aduedos
+cuando llamamos el endpoint regresa matricula, mensaje acuerdo de situacion actual (si 90 para rriba mensaje dice te graduaste con honores
+                                                                                    si 90 para arriba y aduedo mensaje dice tenias honores pero tienes aduedo
+                                                                                    70-90 sin importar aduedo mensaje dice pasaste muy apenas
+                                                                                    si alumno reprobo (69 para abajo) y no tiene aduedo mensaje dice
+                                                                                    tienes derech a un examen adicional
+                                                                                    y si reprobo y aduedo mesnaje dice expulsado)
+ejemplo de resultado 
+alumnos:{
+    {
+    "matricula": "a0123812"
+    "mensaje": "expulsado"
+    },
+    {
+    "matricula": "a0129317"
+    "mensaje": "te graduaste con honores"
+    },
+    {
+    "matricula": "a0472951"
+    "mensaje": "tenias honores pero tienes aduedo"
+    },...
+}

@@ -1,21 +1,28 @@
-const AlumnoDB = require('../database/alumno');
+
+import AlumnoDB, { Alumno } from '../database/alumno';
 
 class AlumnoController {
-  async getAllAlumnos() {
-    const alumnos = AlumnoDB.getAll();
-    for const alumno in alumnos(
-        if (alumno[2] >= 90) && (alumno[3] == false){
-            alumnos[4] == "te graduaste con honores"
+    async getAllAlumnos(): Promise<Alumno[]> {
+        const alumnos = await AlumnoDB.GetAll();
+
+        for (const alumno of alumnos) {
+            const { calificacion, adeudo } = alumno;
+
+            if (calificacion >= 90 && !adeudo) {
+                alumno.mensaje = "te graduaste con honores";
+            } else if (calificacion >= 90 && adeudo) {
+                alumno.mensaje = "tenías honores pero tienes adeudo";
+            } else if (calificacion >= 70) {
+                alumno.mensaje = "pasaste muy apenas";
+            } else if (calificacion <= 69 && !adeudo) {
+              alumno.mensaje = "reprobaste pero tienes derecho a un examen extra";
+            }else {
+                alumno.mensaje = "no pasaste";
+            }
         }
-        else if (alumno[2] >= 90) && (alumno[3] == true){
-            alumnos[4] == "tenias honores pero tienes aduedo"
-        }
-        else if (alumno[2] <= 89) && (alumno[2] >= 70){
-            alumnos[4] == "pasaste muy apenas"
-        }
-    )
-    return AlumnoDB.getAll();
-  }
+
+        return alumnos;
+    }
 }
 
 export default AlumnoController;

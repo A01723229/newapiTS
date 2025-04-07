@@ -5,6 +5,6 @@ const router  = express.Router();
 
 const alumnoHttpHandler = new AlumnoHttpHandler();
 
-router.get('/', alumnoHttpHandler.getAlumnos);
+router.get('/', alumnoHttpHandler.getAllAlumnos);
 
 export default router;

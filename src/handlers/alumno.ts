@@ -1,15 +1,16 @@
-import {  Request, Response, NextFunction } from 'express';
-import AlumnoController from '../controllers/alumno'
+
+import { Request, Response, NextFunction } from 'express';
+import AlumnoController from '../controllers/alumno';
 
 const alumnoController = new AlumnoController();
 
 class AlumnoHttpHandler {
-    async getTweets(request: Request, response: Response, next: NextFunction) {
+    async getAllAlumnos(req: Request, res: Response, next: NextFunction) {
         try {
             const alumnos = await alumnoController.getAllAlumnos();
-            response.json(alumnos)
+            res.json(alumnos);
         } catch (error) {
-            next(error)
+            next(error);
         }
     }
 }
